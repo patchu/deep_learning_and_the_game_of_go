@@ -1,4 +1,5 @@
 # tag::test_setup[]
+import datetime
 from dlgo.nn import load_mnist
 from dlgo.nn import network
 from dlgo.nn.layers import DenseLayer, ActivationLayer
@@ -20,9 +21,17 @@ net.add(ActivationLayer(10))  # <4>
 # <4> The final layer has size 10, the number of classes to predict.
 # end::test_setup[]
 
+now = datetime.datetime.now()
+print ("Current date and time : ")
+print (now.strftime("%Y-%m-%d %H:%M:%S"))
+
 # tag::test_run[]
 net.train(training_data, epochs=10, mini_batch_size=10,
           learning_rate=3.0, test_data=test_data)  # <1>
+
+now = datetime.datetime.now()
+print ("Current date and time : ")
+print (now.strftime("%Y-%m-%d %H:%M:%S"))
 
 # <1> You can now easily train the model by specifying train and test data, the number of epochs, the mini-batch size and the learning rate.
 # end::test_run[]
